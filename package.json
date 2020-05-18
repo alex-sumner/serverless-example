@@ -14,15 +14,15 @@
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^25.2.2",
-    "aws-sdk": "^2.676.0",
+    "aws-sdk": "^2.678.0",
     "awscred": "^1.5.0",
     "cheerio": "^1.0.0-rc.3",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "jest": "^26.0.1",
     "lodash": "^4.17.15",
-    "serverless": "^1.70.1",
-    "serverless-export-env": "^1.2.0",
+    "serverless": "^1.71.1",
+    "serverless-export-env": "^1.3.1",
     "serverless-pseudo-parameters": "^2.5.0"
   },
   "dependencies": {
