@@ -19,6 +19,7 @@ const findRestaurantsByTheme = async (theme, count) => {
 }
 
 module.exports.handler = async (event, context) => {
+
   const req = JSON.parse(event.body)
   const theme = req.theme
   const restaurants = await findRestaurantsByTheme(theme, defaultResults)
@@ -28,4 +29,4 @@ module.exports.handler = async (event, context) => {
   }
 
   return response
-}
+  }

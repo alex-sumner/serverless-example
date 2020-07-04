@@ -7,13 +7,6 @@ custom:
 provider:
   name: aws
   runtime: nodejs12.x
-  environment:
-    rootUrl:
-      Fn::Join:
-        - ""
-        - - https://
-          - !Ref ApiGatewayRestApi
-          - .execute-api.${self:provider.region}.amazonaws.com/${self:provider.stage}
 
   iamRoleStatements:
     - Effect: Allow
@@ -31,15 +24,9 @@ functions:
           path: /
           method: get
     environment:
-      restaurants_api:
-        Fn::Join:
-          - ""
-          - - https://
-            - !Ref ApiGatewayRestApi
-            - .execute-api.${self:provider.region}.amazonaws.com/${self:provider.stage}/restaurants
+      restaurants_api: https://#{ApiGatewayRestApi}.execute-api.#{AWS::Region}.amazonaws.com/${self:provider.stage}/restaurants
       cognito_user_pool_id: !Ref CognitoUserPool
       cognito_client_id: !Ref WebCognitoUserPoolClient
-      cognito_server_client_id: !Ref ServerCognitoUserPoolClient
 
   get-restaurants:
     handler: functions/get-restaurants.handler
@@ -143,6 +130,9 @@ resources:
         ProviderARNs:
           - !GetAtt CognitoUserPool.Arn
 
+
+
+
   Outputs:
     RestaurantsTableName:
       Value: !Ref RestaurantsTable
@@ -158,6 +148,9 @@ resources:
 
     CognitoUserPoolServerClientId:
       Value: !Ref ServerCognitoUserPoolClient
+
+
+
 
 plugins:
   - serverless-export-env
