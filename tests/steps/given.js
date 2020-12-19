@@ -10,9 +10,9 @@ const an_authenticated_user = async () => {
   const userpoolId = process.env.cognito_user_pool_id
   const clientId = process.env.cognito_server_client_id
 
-  const firstName = chance.first()
-  const lastName  = chance.last()
-  const suffix    = chance.string({length: 8, alpha: true})
+  const firstName = chance.first({ nationality: "en" })
+  const lastName  = chance.last({ nationality: "en" })
+  const suffix    = chance.string({length: 8, pool: "abcdefghijklmnopqrstuvwxyz"})
   const username  = `test-${firstName}-${lastName}-${suffix}`
   const password  = random_password()
   const email     = `${firstName}-${lastName}@big-mouth.com`
